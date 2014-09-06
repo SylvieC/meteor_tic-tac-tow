@@ -1,0 +1,78 @@
+/* CSS declarations go here */
+td{ 
+border: 1px solid black;
+width: 30%;
+padding: 30px;
+}
+img{
+  display:block;
+}
+body{
+  background:beige;
+}
+table{
+  background:white;
+}
+#teams {
+  position:relative;
+  overflow:hidden;
+  font-size:24px;
+  line-height:30px;
+  margin-bottom:10px;
+  text-align: center;
+}
+#teams li {
+  width:45%;
+  float:left;
+  padding:10px;
+  border-radius:6px;
+  /*opacity:0.5;*/
+}
+#teams li:last-child {
+  float:right;
+}
+/*#teams li.current {
+  background:forestgreen;
+  color:#fff;
+  opacity:1;
+}*/
+
+#teams img {
+  display:block;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  float:left;
+  margin-right:10px;
+}
+#teams h2 {
+  font-weight:bold;
+}
+#teams h2 span {
+  font-size:30px;
+}
+.true{
+  background:forestgreen;
+  background:forestgreen;
+  color:#fff;
+  opacity:1;
+}
+.false{
+   background:rgba(0,0,0,0.2);
+  -webkit-transition: background 0.3s ease-in;
+  -moz-transition: background 0.3s ease-in;
+  -ms-transition: background 0.3s ease-in;
+  -o-transition: background 0.3s ease-in;
+  transition: background 0.3s ease-in;
+  background:rgba();
+  opacity: 0.5;
+}
+#game {
+  /*position:absolute;*/
+  width:60%;
+  padding:12px 60px 60px 60px;
+  margin: 0 auto;
+  /*top:50%;
+  left:50%;
+  margin:-420px 0 0 -300px;*/
+}

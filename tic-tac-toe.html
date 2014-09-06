@@ -1,0 +1,254 @@
+<head>
+  <title>tic-tac-toe</title>
+</head>
+
+<body>
+  <div class="players">
+    {{>teams}}
+  </div>
+  {{>mainBoard}}
+</body>
+
+
+
+ <!--  <template name="addReview">
+
+<input id="restaurantName"/>
+<input id="restaurantRating"/>
+
+<button id="submit">Submit New Restaurant</button>
+</template> -->
+<template name="teams">
+  <div id='game'>
+      <ul id="teams">
+        {{#each players}}
+       <li class={{current}}>
+       <img src={{img_url}}>
+       <h2>Team<span>{{id}}</span><span class="team"></span></h2><h3 class="player">{{name}}
+     </h3></li>
+        {{/each}}
+      </ul>
+    </div>
+  </template>
+
+<template name="mainBoard">
+  <h1>Tic-Tac-Tow</h1>
+ 
+  <table>
+    <tr>
+      <td> {{>innerBoard1}}</td>
+      <td> {{>innerBoard2}}</td>
+      <td>{{>innerBoard3}}</td>
+    </tr>
+    <tr>
+       <td>{{>innerBoard4}}</td>
+      <td>{{>innerBoard5}}</td>
+      <td>{{>innerBoard6}}</td>
+    </tr>
+    <tr>
+       <td> {{>innerBoard7}}</td>
+      <td> {{>innerBoard8}}</td>
+      <td>{{>innerBoard9}}</td>
+    </tr>
+  </table>
+  <ul>
+    {{#each todos}}
+    <li>{{title}}</li>
+    {{ /each}}
+  </ul>
+  <input type="button" value="Click" />
+
+</template>
+
+
+<template name="innerBoard1">
+   <table>
+    <tr>
+      <td>First </td>
+      <td> Second template</td>
+      <td>Third Template</td>
+    </tr>
+    <tr>
+       <td> fourth template</td>
+      <td> fifth template</td>
+      <td>sixth Template</td>
+    </tr>
+    <tr>
+       <td> seventh template</td>
+      <td> eighth template</td>
+      <td>ninth Template</td>
+    </tr>
+
+  </table>
+</template>
+
+<template name="innerBoard2">
+   <table>
+    <tr>
+      <td>First </td>
+      <td> Second template</td>
+      <td>Third Template</td>
+    </tr>
+    <tr>
+       <td> fourth template</td>
+      <td> fifth template</td>
+      <td>sixth Template</td>
+    </tr>
+    <tr>
+       <td> seventh template</td>
+      <td> eighth template</td>
+      <td>ninth Template</td>
+    </tr>
+
+  </table>
+</template>
+<template name="innerBoard3">
+   <table>
+    <tr>
+      <td>First </td>
+      <td> Second template</td>
+      <td>Third Template</td>
+    </tr>
+    <tr>
+       <td> fourth template</td>
+      <td> fifth template</td>
+      <td>sixth Template</td>
+    </tr>
+    <tr>
+       <td> seventh template</td>
+      <td> eighth template</td>
+      <td>ninth Template</td>
+    </tr>
+
+  </table>
+</template>
+
+<template name="innerBoard4">
+   <table>
+    <tr>
+      <td>First </td>
+      <td> Second template</td>
+      <td>Third Template</td>
+    </tr>
+    <tr>
+       <td> fourth template</td>
+      <td> fifth template</td>
+      <td>sixth Template</td>
+    </tr>
+    <tr>
+       <td> seventh template</td>
+      <td> eighth template</td>
+      <td>ninth Template</td>
+    </tr>
+
+  </table>
+</template>
+
+<template name="innerBoard5">
+   <table>
+    <tr>
+      <td>First </td>
+      <td> Second template</td>
+      <td>Third Template</td>
+    </tr>
+    <tr>
+       <td> fourth template</td>
+      <td> fifth template</td>
+      <td>sixth Template</td>
+    </tr>
+    <tr>
+       <td> seventh template</td>
+      <td> eighth template</td>
+      <td>ninth Template</td>
+    </tr>
+
+  </table>
+</template>
+
+<template name="innerBoard6">
+   <table>
+    <tr>
+      <td>First </td>
+      <td> Second template</td>
+      <td>Third Template</td>
+    </tr>
+    <tr>
+       <td> fourth template</td>
+      <td> fifth template</td>
+      <td>sixth Template</td>
+    </tr>
+    <tr>
+       <td> seventh template</td>
+      <td> eighth template</td>
+      <td>ninth Template</td>
+    </tr>
+
+  </table>
+</template>
+
+<template name="innerBoard7">
+   <table>
+    <tr>
+      <td>First </td>
+      <td> Second template</td>
+      <td>Third Template</td>
+    </tr>
+    <tr>
+       <td> fourth template</td>
+      <td> fifth template</td>
+      <td>sixth Template</td>
+    </tr>
+    <tr>
+       <td> seventh template</td>
+      <td> eighth template</td>
+      <td>ninth Template</td>
+    </tr>
+
+  </table>
+</template>
+
+<template name="innerBoard8">
+   <table>
+    <tr>
+      <td>First </td>
+      <td> Second template</td>
+      <td>Third Template</td>
+    </tr>
+    <tr>
+       <td> fourth template</td>
+      <td> fifth template</td>
+      <td>sixth Template</td>
+    </tr>
+    <tr>
+       <td> seventh template</td>
+      <td> eighth template</td>
+      <td>ninth Template</td>
+    </tr>
+
+  </table>
+</template>
+
+<template name="innerBoard9">
+   <table>
+    <tr>
+      <td>First </td>
+      <td> Second template</td>
+      <td>Third Template</td>
+    </tr>
+    <tr>
+       <td> fourth template</td>
+      <td> fifth template</td>
+      <td>sixth Template</td>
+    </tr>
+    <tr>
+       <td> seventh template</td>
+      <td> eighth template</td>
+      <td>ninth Template</td>
+    </tr>
+
+  </table>
+</template>
+
+  
+
+  
