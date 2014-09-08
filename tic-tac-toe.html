@@ -6,20 +6,18 @@
   <div class="players">
     {{>teams}}
   </div>
+  <div>
+    <div align='center' id='mainB'>
   {{>mainBoard}}
+    </div>
+</div>
 </body>
 
 
-
- <!--  <template name="addReview">
-
-<input id="restaurantName"/>
-<input id="restaurantRating"/>
-
-<button id="submit">Submit New Restaurant</button>
-</template> -->
 <template name="teams">
+<!--    <h1>Tic-Tac-Tow</h1> -->
   <div id='game'>
+
       <ul id="teams">
         {{#each players}}
        <li class={{current}}>
@@ -32,223 +30,230 @@
   </template>
 
 <template name="mainBoard">
-  <h1>Tic-Tac-Tow</h1>
- 
-  <table>
+  <table id="firstBoard">
     <tr>
-      <td> {{>innerBoard1}}</td>
-      <td> {{>innerBoard2}}</td>
-      <td>{{>innerBoard3}}</td>
+      <td class="main" id="main1"> {{>innerBoard1}}</td>
+      <td class="main" id="main2"> {{>innerBoard2}}</td>
+      <td class="main" id="main3">{{>innerBoard3}}</td>
     </tr>
     <tr>
-       <td>{{>innerBoard4}}</td>
-      <td>{{>innerBoard5}}</td>
-      <td>{{>innerBoard6}}</td>
+       <td class="main" id="main4">{{>innerBoard4}}</td>
+      <td class="main" id="main5">{{>innerBoard5}}</td>
+      <td class="main"  id="main6">{{>innerBoard6}}</td>
     </tr>
     <tr>
-       <td> {{>innerBoard7}}</td>
-      <td> {{>innerBoard8}}</td>
-      <td>{{>innerBoard9}}</td>
+       <td class="main" id="main7"> {{>innerBoard7}}</td>
+      <td class="main" id="main8"> {{>innerBoard8}}</td>
+      <td class="main" id="main9">{{>innerBoard9}}</td>
     </tr>
   </table>
-  <ul>
-    {{#each todos}}
-    <li>{{title}}</li>
-    {{ /each}}
-  </ul>
-  <input type="button" value="Click" />
-
 </template>
 
 
 <template name="innerBoard1">
-   <table>
+  <table  class="inner Board" id="innerBoard1">
     <tr>
-      <td>First </td>
-      <td> Second template</td>
-      <td>Third Template</td>
+      <td id="main11"> </td>
+      <td id="main12"> </td>
+      <td id="main13"></td>
     </tr>
     <tr>
-       <td> fourth template</td>
-      <td> fifth template</td>
-      <td>sixth Template</td>
+       <td id="main14"></td>
+      <td id="main15"></td>
+      <td id="main16"></td>
     </tr>
     <tr>
-       <td> seventh template</td>
-      <td> eighth template</td>
-      <td>ninth Template</td>
+       <td id="main17"></td>
+      <td id="main18"></td>
+      <td id="main19"></td>
     </tr>
-
   </table>
+  <!--  <table id='newWin'>
+  <tr>
+    <td id="winnerBoard"></td>
+  </tr> 
+</table> -->
 </template>
 
 <template name="innerBoard2">
-   <table>
+   <table class="innerBoard" id="innerBoard2">
     <tr>
-      <td>First </td>
-      <td> Second template</td>
-      <td>Third Template</td>
+      <td id=""> </td>
+      <td id=""> </td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> fourth template</td>
-      <td> fifth template</td>
-      <td>sixth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> seventh template</td>
-      <td> eighth template</td>
-      <td>ninth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
-
   </table>
+  <!--  <table id='newWin'>
+  <tr>
+    <td id="winnerBoard"></td>
+  </tr> 
+</table> -->
+ 
+ 
 </template>
 <template name="innerBoard3">
-   <table>
+ <table class="innerBoard" id="innerBoard3">
     <tr>
-      <td>First </td>
-      <td> Second template</td>
-      <td>Third Template</td>
+      <td id=""> </td>
+      <td id=""> </td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> fourth template</td>
-      <td> fifth template</td>
-      <td>sixth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> seventh template</td>
-      <td> eighth template</td>
-      <td>ninth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
-
   </table>
+  <!--  <table id='newWin'>
+  <tr>
+    <td id="winnerBoard"></td>
+  </tr> 
+</table> --> 
+
 </template>
 
 <template name="innerBoard4">
-   <table>
+   <table class="innerBoard" id="innerBoard4">
     <tr>
-      <td>First </td>
-      <td> Second template</td>
-      <td>Third Template</td>
+      <td id=""> </td>
+      <td id=""> </td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> fourth template</td>
-      <td> fifth template</td>
-      <td>sixth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> seventh template</td>
-      <td> eighth template</td>
-      <td>ninth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
-
   </table>
+  <!--  <table id='newWin'>
+  <tr>
+    <td id="winnerBoard"></td>
+  </tr> 
+</table> -->
 </template>
 
 <template name="innerBoard5">
-   <table>
+    <table class="innerBoard" id="innerBoard5">
     <tr>
-      <td>First </td>
-      <td> Second template</td>
-      <td>Third Template</td>
+      <td id=""> </td>
+      <td id=""> </td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> fourth template</td>
-      <td> fifth template</td>
-      <td>sixth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> seventh template</td>
-      <td> eighth template</td>
-      <td>ninth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
-
   </table>
+  <!--  <table id='newWin'>
+  <tr>
+    <td id="winnerBoard"></td>
+  </tr> 
+</table> -->
 </template>
 
 <template name="innerBoard6">
-   <table>
+  <table class="innerBoard" id="innerBoard6">
     <tr>
-      <td>First </td>
-      <td> Second template</td>
-      <td>Third Template</td>
+      <td id=""> </td>
+      <td id=""> </td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> fourth template</td>
-      <td> fifth template</td>
-      <td>sixth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> seventh template</td>
-      <td> eighth template</td>
-      <td>ninth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
-
   </table>
 </template>
 
 <template name="innerBoard7">
-   <table>
+    <table class="innerBoard" id="innerBoard7">
     <tr>
-      <td>First </td>
-      <td> Second template</td>
-      <td>Third Template</td>
+      <td id=""> </td>
+      <td id=""> </td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> fourth template</td>
-      <td> fifth template</td>
-      <td>sixth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> seventh template</td>
-      <td> eighth template</td>
-      <td>ninth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
-
   </table>
 </template>
 
 <template name="innerBoard8">
-   <table>
+    <table class="innerBoard" id="innerBoard8">
     <tr>
-      <td>First </td>
-      <td> Second template</td>
-      <td>Third Template</td>
+      <td id=""> </td>
+      <td id=""> </td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> fourth template</td>
-      <td> fifth template</td>
-      <td>sixth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> seventh template</td>
-      <td> eighth template</td>
-      <td>ninth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
-
   </table>
 </template>
 
 <template name="innerBoard9">
-   <table>
+  <table class="innerBoard" id="innerBoard5">
     <tr>
-      <td>First </td>
-      <td> Second template</td>
-      <td>Third Template</td>
+      <td id=""> </td>
+      <td id=""> </td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> fourth template</td>
-      <td> fifth template</td>
-      <td>sixth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
     <tr>
-       <td> seventh template</td>
-      <td> eighth template</td>
-      <td>ninth Template</td>
+       <td id=""></td>
+      <td id=""></td>
+      <td id=""></td>
     </tr>
-
   </table>
 </template>
 
-  
-
-  
