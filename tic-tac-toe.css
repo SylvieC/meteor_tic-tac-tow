@@ -7,9 +7,7 @@ img{
   display:block;
  
 }
-body{
-  background:beige;
-}
+
 
 #teams {
   position:relative;
@@ -67,9 +65,7 @@ body{
   left:50%;
   margin:-420px 0 0 -300px;*/
 }
-/*-------*/
-/* CSS declarations go here */
-/* CSS declarations go here */
+
 html,body {
   height:100%;
   width:100%;
@@ -89,14 +85,16 @@ td{
   border:4px solid rgba(0,0,0,0.6);
   box-sizing:border-box;
   text-align:center;
-  line-height:150px;
-  font-size:50px;
+  line-height:50px;
+  font-size: 60px;
 }
 img{
   display:block;
 }
 body{
-  background:beige;
+  background:#11051F;
+
+
 }
 table{
   background:white;
@@ -153,6 +151,7 @@ table{
   transition: background 0.3s ease-in;
   background:rgba();
   opacity: 0.5;
+  color:grey;
 }
 #game {
   /*position:absolute;*/
@@ -182,6 +181,13 @@ margin-bottom: 50px;
 .players{
   margin-top: 60px;
   padding-bottom: 20px;
+}
+
+span.sign {
+border: 1px solid;
+/* padding: 5px; */
+padding-left: 10px;
+padding-right: 10px;
 }
 
 

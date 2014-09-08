@@ -20,10 +20,10 @@
 
       <ul id="teams">
         {{#each players}}
-       <li class={{current}}>
+       <li class={{current}} id={{name}}>
        <img src={{img_url}}>
-       <h2>Team<span>{{id}}</span><span class="team"></span></h2><h3 class="player">{{name}}
-     </h3></li>
+       <h2>Team<span>{{id}}</span><span class="team"> </span></h2><h3 class="player"> {{full_name}}
+     </h3><span class='sign'>{{sign}} </span></li>
         {{/each}}
       </ul>
     </div>

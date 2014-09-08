@@ -2,7 +2,8 @@ var winningCombos = [[1,2,3], [1,5,9],[3,5,7],[4,5,6], [7,8,9],[1,4,7],[2,5,8],[
  
 var team = [
       {
-      name:      'Darth Vader',
+      name:      'Darth',
+      full_name: 'Darth Vader',
       img_url:   '/darthvador.jpeg',
       id:         '1', 
       current:    'true',
@@ -11,10 +12,11 @@ var team = [
       // indicator: $(status_indicators[0])
     },
     {
-      name:      'Obi Wan Kenobi',
+      name:      'Obi',
+      full_name:  'Obi Wan Kenobi',
       img_url:   '/obi.jpeg',
       id:         '2' ,
-      current:    'f',
+      current:    'false',
       sign:       '0',
       wins:        []    
 
@@ -84,11 +86,13 @@ if (Meteor.isClient) {
  Template.innerBoard1.events({
 
     'click td': function (e) {
-      console.log('clicked');
+      
 
       //get the number of the tile that was clicked, and add it to the wins of current_player
         var value = $(e.currentTarget).attr('id')[5];
-        console.log(value);
+        console.log('the tile is tile number ' + value);
+        var boardNum = $(e.currentTarget).attr('id')[4];
+        console.log('the board clicked is: ' + boardNum);
         //turn value from a string into an integer (ex "5" to 5)
         value = parseInt(value);
         if(tie === false){
@@ -110,8 +114,8 @@ if (Meteor.isClient) {
                 tie = true;
               }else{
                 //the game continues if there aren't nine tiles used yet
-                switch_current('Darth Vader');
-                switch_current('Obi Wan Kenobi');
+                switch_current('Darth');
+                switch_current('Obi');
                 update_current_player();
               }
              //if there is a winner
