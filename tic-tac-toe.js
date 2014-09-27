@@ -8,7 +8,8 @@ var team = [
       id:         '1', 
       current:    'true',
       sign:        'X',
-      wins:        []
+      wins:        {1: [], 2: [], 3: [], 4: [], 5:[], 6: [], 7: [], 8: [], 9: []},
+      bigwins:     []
       // indicator: $(status_indicators[0])
     },
     {
@@ -18,12 +19,13 @@ var team = [
       id:         '2' ,
       current:    'false',
       sign:       'O',
-      wins:        []   
+      wins:        {1: [], 2: [], 3: [], 4: [], 5:[], 6: [], 7: [], 8: [], 9: []},
+      bigwins:     [] 
 
       // indicator: $(status_indicators[1])
     }];
-var used = []; 
-var tie = false;
+var used = {1: [], 2: [], 3: [], 4: [], 5:[], 6: [], 7: [], 8: [], 9: []};
+var tie = {1: false, 2: false, 3: false, 4: false, 5:false, 6: false, 7: false, 8: false, 9: false};
 // var sign = "";  
 
 var current_player = team[0];
@@ -54,9 +56,9 @@ function isSubArray(subArray, array){
   return true;
 }
 
-function checkWin(player){
+function checkWin(player, boardNum){
     for(var i = 0; i < winningCombos.length; i++){
-      if (isSubArray(winningCombos[i], player.wins)){ 
+      if (isSubArray(winningCombos[i], player.wins.boardNum)){ 
         return true;
       }
     }
@@ -97,23 +99,29 @@ if (Meteor.isClient) {
         console.log('the board clicked is: ' + boardNum);
         //turn value from a string into an integer (ex "5" to 5)
         value = parseInt(value);
-        if(tie === false){
-        if (used.indexOf(value) === -1){
-            used.push(value);
+        if(tie.boardNum === false){
+          //if the tile hasn't already been clicked
+          debugger;
+        if (used.boardNum.indexOf(value) === -1){
+            used.boardNum.push(value);
             var el = $(e.currentTarget);
             $(el).html(current_player.sign);
-            current_player.wins.push(value);
-            if(!checkWin(current_player)){
+            current_player.wins.boardNum.push(value);
+            if(!checkWin(current_player,boardNum)){
               console.log(current_player.name + ' loses ')
-              console.log(current_player.wins);
-              console.log(isSubArray(current_player.wins, winningCombos));
+              console.log('array of wins for board ' + boardNum + ' ' + current_player.wins.boardNum);
+              console.log('wins' + current_player.wins);
+              console.log(isSubArray(current_player.wins.boardNum, winningCombos));
               //if all the tiles have been used and there is no winner it is a tie, the board is replace 
               //but the two signs
-              if (used.length === 9){
+              if (used.boardNum.length === 9){
                 // $('#winnerBoard').html('XO').css('font-size','330px');
                 // $('#firstBoard').hide();
                 // $('#newWin').show();
-                tie = true;
+                tie.boardNum = true;
+                team[0].bigwins.push(boardNum);
+                team[1].bigwins.push(boardNum);
+
               }else{
                 //the game continues if there aren't nine tiles used yet
                 switch_current('Darth');
@@ -127,6 +135,7 @@ if (Meteor.isClient) {
               // $('#firstBoard').hide();
               // $('#newWin').show();
               Session.set("winnerBoard1",false);
+              current_player.bigwins.push(boardNum);
               // Template.innerBoard1.noWinner(false);
               
             
