@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 td{ 
-border: 1px solid black;
+/*border: 1px solid black;*/
 width: 30%;
 }
 img{
@@ -75,8 +75,8 @@ html,body {
 }
 
 td.main{
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
 }
 
 td{ 
@@ -92,7 +92,8 @@ img{
   display:block;
 }
 body{
-  background:#11051F;
+ /* background:#11051F;*/
+  background:darkgrey;
 
 
 }
@@ -190,5 +191,10 @@ padding-left: 10px;
 padding-right: 10px;
 }
 
+li#Obi, li#Darth{
+  padding-bottom: 24px;
+}
 
-
+.inner.Board{
+  margin-left: 5px;
+}

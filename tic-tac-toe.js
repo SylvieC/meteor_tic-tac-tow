@@ -1,5 +1,5 @@
 var winningCombos = [[1,2,3], [1,5,9],[3,5,7],[4,5,6], [7,8,9],[1,4,7],[2,5,8],[3,6,9]];
- 
+ //At each turn, I need to check if it is a valid move. 
 var team = [
       {
       name:      'Darth',
@@ -17,8 +17,8 @@ var team = [
       img_url:   '/obi.jpeg',
       id:         '2' ,
       current:    'false',
-      sign:       '0',
-      wins:        []    
+      sign:       'O',
+      wins:        []   
 
       // indicator: $(status_indicators[1])
     }];
@@ -34,6 +34,7 @@ var update_current_player = function(){
     current_player = team[0];
   }
 };
+
 var switch_current = function(name){
   var value = $('#' + name).attr('class');
   if (value === 'true'){
@@ -63,6 +64,9 @@ function checkWin(player){
   }     
 
 if (Meteor.isClient) {
+  Meteor.startup(function(){
+    Session.set('winnerBoard1', true);
+  })
   // Template.mainBoard.todos = function () {
   //  return [
   //   {title: 'make myself lunch'},
@@ -86,8 +90,6 @@ if (Meteor.isClient) {
  Template.innerBoard1.events({
 
     'click td': function (e) {
-      
-
       //get the number of the tile that was clicked, and add it to the wins of current_player
         var value = $(e.currentTarget).attr('id')[5];
         console.log('the tile is tile number ' + value);
@@ -120,16 +122,43 @@ if (Meteor.isClient) {
               }
              //if there is a winner
             }else{
-              console.log(current_player.name + ' wins!');
+              alert(current_player.name + ' wins!');
               $('#winnerBoard').html(current_player.sign);
-              $('#firstBoard').hide();
-              $('#newWin').show();
-
-            }
+              // $('#firstBoard').hide();
+              // $('#newWin').show();
+              Session.set("winnerBoard1",false);
+              // Template.innerBoard1.noWinner(false);
+              
+            
+           }
           }
        }
     }
   });
+
+  Template.innerBoard1.noWinner = function(){
+    //answer is a boolean true or false
+    return Session.get("winnerBoard1");
+
+  }
+
+  Template.innerBoard1.showWinner = function(){
+
+     var result = true;
+
+     if (result)
+     {
+      return "X";
+     }
+     else if (result == "draw"){
+       return "XO";
+     }
+     else {
+
+      return "O";
+     }
+
+  }
 
  }
 
