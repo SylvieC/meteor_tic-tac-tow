@@ -27,6 +27,7 @@ var team = [
 var used = {1: [], 2: [], 3: [], 4: [], 5:[], 6: [], 7: [], 8: [], 9: []};
 var tie = {1: false, 2: false, 3: false, 4: false, 5:false, 6: false, 7: false, 8: false, 9: false};
 // var sign = "";  
+var sign = true;
 
 var current_player = team[0];
 var update_current_player = function(){
@@ -100,8 +101,8 @@ if (Meteor.isClient) {
         //turn value from a string into an integer (ex "5" to 5)
         value = parseInt(value);
         if(tie.boardNum === false){
+
           //if the tile hasn't already been clicked
-          debugger;
         if (used.boardNum.indexOf(value) === -1){
             used.boardNum.push(value);
             var el = $(e.currentTarget);
