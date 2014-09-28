@@ -28,6 +28,7 @@ var used = {1: [], 2: [], 3: [], 4: [], 5:[], 6: [], 7: [], 8: [], 9: []};
 var tie = {1: false, 2: false, 3: false, 4: false, 5:false, 6: false, 7: false, 8: false, 9: false};
 // var sign = "";  
 var sign = true;
+var BoardNum;
 
 var current_player = team[0];
 var update_current_player = function(){
@@ -59,7 +60,7 @@ function isSubArray(subArray, array){
 
 function checkWin(player, boardNum){
     for(var i = 0; i < winningCombos.length; i++){
-      if (isSubArray(winningCombos[i], player.wins.boardNum)){ 
+      if (isSubArray(winningCombos[i], player.wins[boardNum])){ 
         return true;
       }
     }
@@ -69,6 +70,7 @@ function checkWin(player, boardNum){
 if (Meteor.isClient) {
   Meteor.startup(function(){
     Session.set('winnerBoard1', true);
+    Session.set('winnerBoard2', true);
   })
   // Template.mainBoard.todos = function () {
   //  return [
@@ -90,6 +92,15 @@ if (Meteor.isClient) {
    }
 }
 
+ Template.innerBoard2.rendered = function() {
+    if(!this._rendered) {
+      this._rendered = true;
+      // $('#newWin').hide();
+   }
+}
+
+// board 1
+
  Template.innerBoard1.events({
 
     'click td': function (e) {
@@ -100,28 +111,30 @@ if (Meteor.isClient) {
         console.log('the board clicked is: ' + boardNum);
         //turn value from a string into an integer (ex "5" to 5)
         value = parseInt(value);
-        if(tie.boardNum === false){
+        if(tie[boardNum] === false){
 
           //if the tile hasn't already been clicked
-        if (used.boardNum.indexOf(value) === -1){
-            used.boardNum.push(value);
+        if (used[boardNum].indexOf(value) === -1){
+            used[boardNum].push(value);
             var el = $(e.currentTarget);
             $(el).html(current_player.sign);
-            current_player.wins.boardNum.push(value);
+            current_player.wins[boardNum].push(value);
             if(!checkWin(current_player,boardNum)){
               console.log(current_player.name + ' loses ')
-              console.log('array of wins for board ' + boardNum + ' ' + current_player.wins.boardNum);
+              console.log('array of wins for board ' + boardNum + ' ' + current_player.wins[boardNum]);
               console.log('wins' + current_player.wins);
-              console.log(isSubArray(current_player.wins.boardNum, winningCombos));
+              console.log(isSubArray(current_player.wins[boardNum], winningCombos));
               //if all the tiles have been used and there is no winner it is a tie, the board is replace 
               //but the two signs
-              if (used.boardNum.length === 9){
+              if (used[boardNum].length === 9){
                 // $('#winnerBoard').html('XO').css('font-size','330px');
                 // $('#firstBoard').hide();
                 // $('#newWin').show();
-                tie.boardNum = true;
+                tie[boardNum] = true;
                 team[0].bigwins.push(boardNum);
                 team[1].bigwins.push(boardNum);
+                alert('this is a tie');
+                Session.set("winnerBoard1", false);
 
               }else{
                 //the game continues if there aren't nine tiles used yet
@@ -156,19 +169,105 @@ if (Meteor.isClient) {
 
      var result = true;
 
-     if (result)
-     {
-      return "X";
-     }
-     else if (result == "draw"){
-       return "XO";
-     }
-     else {
-
-      return "O";
+     if (result){
+      // alert (current_player.name);
+      if(tie[1] == true){
+        return 'XO';
+      }else if (current_player.name == 'Darth'){
+        return 'X';
+      }else if (current_player.name == 'Obi'){
+        return 'O';
+      }
+    
      }
 
   }
+
+  // board 2
+  Template.innerBoard2.events({
+
+    'click td': function (e) {
+      //get the number of the tile that was clicked, and add it to the wins of current_player
+        var value = $(e.currentTarget).attr('id')[5];
+        console.log('the tile is tile number ' + value);
+        var boardNum = $(e.currentTarget).attr('id')[4];
+        console.log('the board clicked is: ' + boardNum);
+        //turn value from a string into an integer (ex "5" to 5)
+        value = parseInt(value);
+        if(tie[boardNum] === false){
+
+          //if the tile hasn't already been clicked
+        if (used[boardNum].indexOf(value) === -1){
+            used[boardNum].push(value);
+            var el = $(e.currentTarget);
+            $(el).html(current_player.sign);
+            current_player.wins[boardNum].push(value);
+            if(!checkWin(current_player,boardNum)){
+              console.log(current_player.name + ' loses ')
+              console.log('array of wins for board ' + boardNum + ' ' + current_player.wins[boardNum]);
+              console.log('wins' + current_player.wins);
+              console.log(isSubArray(current_player.wins[boardNum], winningCombos));
+              //if all the tiles have been used and there is no winner it is a tie, the board is replace 
+              //but the two signs
+              if (used[boardNum].length === 9){
+                // $('#winnerBoard').html('XO').css('font-size','330px');
+                // $('#firstBoard').hide();
+                // $('#newWin').show();
+                tie[boardNum] = true;
+                team[0].bigwins.push(boardNum);
+                team[1].bigwins.push(boardNum);
+                alert('this is a tie');
+                Session.set("winnerBoard2", false);
+
+              }else{
+                //the game continues if there aren't nine tiles used yet
+                switch_current('Darth');
+                switch_current('Obi');
+                update_current_player();
+              }
+             //if there is a winner
+            }else{
+              alert(current_player.name + ' wins!');
+              $('#winnerBoard').html(current_player.sign);
+              // $('#firstBoard').hide();
+              // $('#newWin').show();
+              Session.set("winnerBoard2",false);
+              current_player.bigwins.push(boardNum);
+              // Template.innerBoard1.noWinner(false);
+              
+            
+           }
+          }
+       }
+    }
+  });
+
+  Template.innerBoard2.noWinner2 = function(){
+    //answer is a boolean true or false
+    return Session.get("winnerBoard2");
+
+  }
+
+  Template.innerBoard2.showWinner2 = function(){
+
+     var result = true;
+
+     if (result){
+      // alert (current_player.name);
+      if(tie[2] == true){
+        return 'XO';
+      }else if (current_player.name == 'Darth'){
+        return 'X';
+      }else if (current_player.name == 'Obi'){
+        return 'O';
+      }
+    
+     }
+
+  }
+
+
+
 
  }
 
